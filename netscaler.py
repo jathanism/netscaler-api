@@ -82,7 +82,7 @@ class API(object):
         self.doctor = ImportDoctor(self._import)
 
         for key, value in kwargs.items():
-            # set attributs, but don't reset explicit ones.
+            # set attributes, but don't reset explicit ones.
             if not hasattr(self, key):
                 if DEBUG: print "setting %s to %s" % (key, value)
                 setattr(self, key, value)
@@ -111,6 +111,7 @@ class API(object):
 
         if DEBUG: print resp.message
         self.logged_in = True
+
         return True
 
     def logout(self):
