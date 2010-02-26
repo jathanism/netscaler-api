@@ -1,0 +1,40 @@
+SUMMARY
+
+NetScaler API is a Python interface for interacting with Citrix NetScaler application delivery controllers, utilizing the SOAP API to execute commands.
+
+DEPENDENCIES
+
+python-suds
+Lightweight SOAP client
+http://pypi.python.org/pypi/suds/
+
+EXAMPLE
+
+   Pass any kwargs to init that you would to the suds.client.Client constructor.
+   A little bit of magic is performed with the ImportDoctor to cover missing
+   types used in the WSDL.
+
+        * If you specify wsdl, this file will be pulled from the default http URL
+        * If you specify wsdl_url, it will override the wsdl file. Local
+         "file://" URLs work just fine.
+
+   To save time for re-usable code, it is a good idea subclassing this to
+   create methods for commonly used commands in your application. Example:
+
+        class MyAPI(API):
+            def __init__(self, **kwargs):
+                API.__init__(self, **kwargs)
+
+            def change_password(self, username, newpass):
+                return self.run("setsystemuser_password", 
+                    **dict(username=username, password=newpass))
+
+   In a script:
+
+        import netscaler
+
+        if __name__ == '__main__':
+            netscaler.DEBUG = True
+            wsdl_url = 'file:///home/j/jathan/sandbox/NSUserAdmin.wsdl'
+            client = netscaler.API('nos', username='nsroot', password='nsroot', wsdl_url=wsdl_url)
+            print client.logged_in
