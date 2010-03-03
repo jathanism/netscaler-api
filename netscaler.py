@@ -162,7 +162,7 @@ class API(object):
         """
         Runs the equivalent of self.client.service.command(**kwargs).
 
-        Will perform login() if not self.logged_in == False.
+        Will perform login() if self.logged_in == False.
         Will perform save() on volatile operations if self.autosave == True.
         """
         if not self.logged_in:
