@@ -1,4 +1,2 @@
-* Implement setup.py
-* Get on PyPI
 * Command-line usage and examples
-* Instructions on using 'filterwsdl' on a NetScaler for faster startup.
+* Better exception handling (such as what if we run save() but savensconfig() is not part of the WSDL?)
