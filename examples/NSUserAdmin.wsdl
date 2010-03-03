@@ -1,0 +1,279 @@
+<!-- *** File generated Wed Aug 19 12:48:01 2009 by genAPI *** -->
+<!--  #NS9.1 Build 97.3  -->
+<definitions xmlns:ns="urn:NSConfig" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/" name="NSConfig" targetNamespace="urn:NSConfig">
+    <types>
+      <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:NSConfig">
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="simpleResult">
+        <xsd:all>
+          <xsd:element name="rc" type="xsd:unsignedInt"/>
+          <xsd:element name="message" type="xsd:string"/>
+        </xsd:all>
+      </xsd:complexType>
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="stringList">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:string[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="unsignedIntList">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="xsd:unsignedInt[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="systemuser">
+        <xsd:sequence>
+          <xsd:element name="username" type="xsd:string"/>
+          <xsd:element name="groupname" type="ns:stringList"/>
+          <xsd:element name="policyname" type="ns:stringList"/>
+          <xsd:element name="priority" type="ns:unsignedIntList"/>
+        </xsd:sequence>
+      </xsd:complexType>
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="systemuserList">
+        <xsd:complexContent>
+          <xsd:restriction base="soapenc:Array">
+            <xsd:attribute ref="soapenc:arrayType" wsdl:arrayType="ns:systemuser[]"/>
+          </xsd:restriction>
+        </xsd:complexContent>
+      </xsd:complexType>
+        <xsd:complexType xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="getsystemuserResult">
+        <xsd:all>
+          <xsd:element name="rc" type="xsd:unsignedInt"/>
+          <xsd:element name="message" type="xsd:string"/>
+          <xsd:element name="List" type="ns:systemuserList" minOccurs="0"/>
+        </xsd:all>
+      </xsd:complexType>
+      </xsd:schema>
+      <!-- NetScaler-specific simple types -->
+    </types>
+    <!-- Messages for NetScaler NSConfig methods -->
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="login">
+  <part name="username" type="xsd:string"/>
+  <part name="password" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="loginResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="loginchallengeresponse">
+  <part name="response" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="loginchallengeresponseResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="logout">
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="logoutResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="addsystemuser">
+  <part name="username" type="xsd:string"/>
+  <part name="password" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="addsystemuserResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="rmsystemuser">
+  <part name="username" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="rmsystemuserResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="setsystemuser_password">
+  <part name="username" type="xsd:string"/>
+  <part name="password" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="setsystemuserResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="bindsystemuser_policy">
+  <part name="username" type="xsd:string"/>
+  <part name="policyname" type="xsd:string"/>
+  <part name="priority" type="xsd:unsignedInt"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="bindsystemuserResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="unbindsystemuser_policy">
+  <part name="username" type="xsd:string"/>
+  <part name="policyname" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="unbindsystemuserResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="getsystemuser">
+  <part name="username" type="xsd:string"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="getsystemuserResponse">
+  <part name="return" type="ns:getsystemuserResult"/>
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="savensconfig">
+</message>
+    <message xmlns="http://schemas.xmlsoap.org/wsdl/" name="savensconfigResponse">
+  <part name="return" type="ns:simpleResult"/>
+</message>
+    <!-- Port for NetScaler NSConfig API -->
+    <portType xmlns="http://schemas.xmlsoap.org/wsdl/" name="NSConfigPort">
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="login">
+    <documentation>
+    </documentation>
+    <input message="ns:login"/>
+    <output message="ns:loginResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="loginchallengeresponse">
+    <documentation>
+    </documentation>
+    <input message="ns:loginchallengeresponse"/>
+    <output message="ns:loginchallengeresponseResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="logout">
+    <documentation>
+    </documentation>
+    <input message="ns:logout"/>
+    <output message="ns:logoutResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="addsystemuser">
+    <documentation>
+    </documentation>
+    <input message="ns:addsystemuser"/>
+    <output message="ns:addsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="rmsystemuser">
+    <documentation>
+    </documentation>
+    <input message="ns:rmsystemuser"/>
+    <output message="ns:rmsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="setsystemuser_password">
+    <documentation>
+    </documentation>
+    <input message="ns:setsystemuser_password"/>
+    <output message="ns:setsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="bindsystemuser_policy">
+    <documentation>
+    </documentation>
+    <input message="ns:bindsystemuser_policy"/>
+    <output message="ns:bindsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="unbindsystemuser_policy">
+    <documentation>
+    </documentation>
+    <input message="ns:unbindsystemuser_policy"/>
+    <output message="ns:unbindsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="getsystemuser">
+    <documentation>
+    </documentation>
+    <input message="ns:getsystemuser"/>
+    <output message="ns:getsystemuserResponse"/>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" name="savensconfig">
+    <documentation>
+    </documentation>
+    <input message="ns:savensconfig"/>
+    <output message="ns:savensconfigResponse"/>
+  </operation>
+    </portType>
+    <!-- Binding for NetScaler NSConfig API -->
+    <binding xmlns="http://schemas.xmlsoap.org/wsdl/" name="NSConfigBinding" type="ns:NSConfigPort">
+      <soap:binding xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="login">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="loginchallengeresponse">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="logout">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="addsystemuser">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="rmsystemuser">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="setsystemuser_password">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="bindsystemuser_policy">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="unbindsystemuser_policy">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="getsystemuser">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+      <operation xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="savensconfig">
+    <soap:operation soapAction="urn:NSConfigAction"/>
+    <input>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </input>
+    <output>
+      <soap:body use="encoded" namespace="urn:NSConfig" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </output>
+  </operation>
+    </binding>
+    <!-- Service for NetScaler NSConfig API -->
+    <service xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="NSConfigService">
+  <port name="NSConfigPort" binding="ns:NSConfigBinding">
+    <soap:address location="http://netscaler_ip/soap/"/>
+  </port>
+</service>
+  </definitions>
