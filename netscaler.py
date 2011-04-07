@@ -17,7 +17,7 @@ controller, utilizing the SOAP API to execute commands.
 """
 
 __author__ = 'Jathan McCollum <jathan+bitbucket@gmail.com>'
-__version__ = '0.2'
+__version__ = '0.2.1'
 
 import logging
 from suds.client import Client, WebFault
@@ -73,7 +73,7 @@ class API(object):
 
             def change_password(self, username, newpass):
                 return self.run("setsystemuser_password", 
-                    **dict(username=username, password=newpass))
+                    username=username, password=newpass)
 
     """
     def __init__(self, host=None, wsdl_url=None, soap_url=None,
@@ -117,6 +117,10 @@ class API(object):
     def __str__(self):
         """Print me!"""
         return str(self.client)
+
+    @property
+    def service(self):
+        return self.client.service
 
     def is_readonly(self, cmd):
         """Validates whether a command is read-only based on READONLY_COMMANDS"""

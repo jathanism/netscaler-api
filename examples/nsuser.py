@@ -18,7 +18,7 @@ class UserAdmin(netscaler.API):
             raise IllegalName(username)
 
         try:
-            resp = self.run("addsystemuser", **{'username': username, 'password': password})
+            resp = self.run("addsystemuser", username=username, password=password})
             return True
         except netscaler.InteractionError, err:
             return False
@@ -29,7 +29,7 @@ class UserAdmin(netscaler.API):
             raise IllegalName(username)
 
         try:
-            resp = self.run("rmsystemuser", **{'username': username})
+            resp = self.run("rmsystemuser", username=username)
             return True
         except netscaler.InteractionError, err:
             return False
@@ -37,7 +37,7 @@ class UserAdmin(netscaler.API):
     def user_exists(self, username):
         """Returns True if user exists."""
         try:
-            resp = self.run("getsystemuser", **{'username': username} )
+            resp = self.run("getsystemuser", username=username)
             return True
         except netscaler.InteractionError, err:
             return False
@@ -48,7 +48,6 @@ if __name__ == '__main__':
     netscaler.DEBUG = True
 
     cwd = os.getcwd()
-
 
     wsdl_url = 'file://%s/NSUserAdmin.wsdl' % cwd
     username = password = 'nsroot'

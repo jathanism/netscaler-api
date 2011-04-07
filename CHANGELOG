@@ -1,3 +1,6 @@
+0.2.1
+	- Replaced all usage of dictionaries passed by reference in examples with keyword args..
+
 0.2 
 	- Added setup.py
 	- Added examples

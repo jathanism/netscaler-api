@@ -24,7 +24,7 @@ EXAMPLE
         class MyAPI(API):
             def change_password(self, username, newpass):
                 return self.run("setsystemuser_password", 
-                    **dict(username=username, password=newpass))
+                    username=username, password=newpass)
 
    In a script:
 
@@ -170,7 +170,7 @@ Service ( NSConfigService ) tns="urn:NSConfig"
 
 Now we can run a command:
 
->>> api.run("addsystemuser", **{'username': 'jathan', 'password': 'jathan'})
+>>> api.run("addsystemuser", username='jathan', password='jathan')
 config changed, autosaving.
 Done
 (simpleResult){
@@ -206,7 +206,7 @@ class UserAdmin(netscaler.API):
             raise IllegalName(username)
 
         try:
-            resp = self.run("addsystemuser", **{'username': username, 'password': password})
+            resp = self.run("addsystemuser", username=username, password=password)
             return True
         except netscaler.InteractionError, err:
             return False
@@ -217,7 +217,7 @@ class UserAdmin(netscaler.API):
             raise IllegalName(username)
 
         try:
-            resp = self.run("rmsystemuser", **{'username': username})
+            resp = self.run("rmsystemuser", username=username)
             return True
         except netscaler.InteractionError, err:
             return False
@@ -225,7 +225,7 @@ class UserAdmin(netscaler.API):
     def user_exists(self, username):
         """Returns True if user exists."""
         try:
-            resp = self.run("getsystemuser", **{'username': username} )
+            resp = self.run("getsystemuser", username=username)
             return True
         except netscaler.InteractionError, err:
             return False 
