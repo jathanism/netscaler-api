@@ -3,8 +3,6 @@
 
 # module netscaler.py
 #
-# Copyright (c) 2010 Jathan McCollum
-#
 # Special thanks to Allen Sanabria (asanabria@linuxdynasty.org) for the initial
 # work on getting the API working with python-suds. 
 #
