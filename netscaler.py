@@ -15,7 +15,6 @@ controller, utilizing the SOAP API to execute commands.
 """
 
 __author__ = 'Jathan McCollum <jathan+bitbucket@gmail.com>'
-__version__ = '0.2.1'
 
 import logging
 from suds.client import Client, WebFault
