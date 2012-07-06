@@ -8,8 +8,6 @@ except ImportError:
 import os
 import sys
 
-from netscaler import __version__
-
 if sys.version_info[:2] < (2, 4):
     print "This package requires Python 2.4+. Sorry!"
     sys.exit(-11)
@@ -27,7 +25,7 @@ class CleanCommand(Command):
 
 setup(
     name = 'netscaler-api',
-    version = __version__,
+    version = '0.2.1',
     url = 'http://bitbucket.org/jathanism/netscaler-api/',
     download_url = 'http://bitbucket.org/jathanism/netscaler-api/downloads/',
     license = 'BSD',
