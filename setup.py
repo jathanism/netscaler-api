@@ -8,6 +8,8 @@ except ImportError:
 import os
 import sys
 
+__version__ = "0.2.3"
+
 if sys.version_info[:2] < (2, 4):
     print "This package requires Python 2.4+. Sorry!"
     sys.exit(-11)
@@ -25,13 +27,12 @@ class CleanCommand(Command):
 
 setup(
     name = 'netscaler-api',
-    version = '0.2.1',
-    url = 'http://bitbucket.org/jathanism/netscaler-api/',
-    download_url = 'http://bitbucket.org/jathanism/netscaler-api/downloads/',
+    version = __version__,
+    url = 'http://github.com/jathanism/netscaler-api/',
     license = 'BSD',
     description = "NetScaler API is a Python interface for interacting with Citrix NetScaler application delivery controllers, utilizing the SOAP API to execute commands.",
     author = 'Jathan McCollum',
-    author_email = 'jathan+bitbucket@gmail.com',
+    author_email = 'jathan@gmail.com',
     py_modules = ['netscaler'],
     install_requires=['suds>=0.3.9'],
     keywords = [

@@ -42,6 +42,11 @@ In a script::
         client = netscaler.API('nos', username='nsroot', password='nsroot', wsdl_url=wsdl_url)
         print client.logged_in
 
+API Documentation
+=================
+
+Please review the :doc:`api`.
+
 Performance
 ===========
 
@@ -346,3 +351,10 @@ And the other way::
     Done
 
 END TRANSMISSION
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`

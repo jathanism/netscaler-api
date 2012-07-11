@@ -1,20 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-# module netscaler.py
-#
-# Special thanks to Allen Sanabria (asanabria@linuxdynasty.org) for the initial
-# work on getting the API working with python-suds. 
-#
-# Original post: http://tinyurl.com/yl4o6vq
-#
-
 """
-A container for interacting with a Citrix NetScaler application delivery
-controller, utilizing the SOAP API to execute commands. 
+Python interface interacting with a Citrix NetScaler application delivery
+controller, utilizing the SOAP API to execute commands.
+
+Special thanks to Allen Sanabria (asanabria@linuxdynasty.org) for the initial
+work on getting the API working with python-suds.
+
+Original post: http://tinyurl.com/yl4o6vq
 """
 
-__author__ = 'Jathan McCollum <jathan+bitbucket@gmail.com>'
+__author__ = 'Jathan McCollum'
+__email__ = 'jathan@gmail.com>'
+__version__ = (0, 2, 3)
 
 import logging
 from suds.client import Client, WebFault
@@ -36,7 +35,7 @@ logging.disable(logging.ERROR)
 # Flip this if you want chatter
 DEBUG = False
 
-# The name of the default WSDL file. 
+# The name of the default WSDL file.
 DEFAULT_WSDL = 'NSConfig.wsdl'
 
 # Commands/prefixes that don't modify the configuration on the device.
@@ -46,10 +45,8 @@ READONLY_COMMANDS = ('login', 'logout', 'get', 'save',)
 __all__ = ['API', 'InteractionError']
 
 
-class InteractionError(Exception): 
+class InteractionError(Exception):
     """Generic API error"""
-    def __init__(self, msg):
-        Exception.__init__(self, msg)
 
 class API(object):
     """
@@ -69,15 +66,15 @@ class API(object):
         class MyAPI(netscaler.API):
 
             def change_password(self, username, newpass):
-                return self.run("setsystemuser_password", 
+                return self.run("setsystemuser_password",
                     username=username, password=newpass)
 
     """
     def __init__(self, host=None, wsdl_url=None, soap_url=None,
-            wsdl=DEFAULT_WSDL, autosave=True, **kwargs):
+                 wsdl=DEFAULT_WSDL, autosave=True, **kwargs):
         """
         Creates the suds.client.Client object and loads the WSDL.
-        
+
         Pass autosave=False to disable the auto-save feature.
         """
         self.host = host
@@ -86,7 +83,7 @@ class API(object):
         self.soap_url = soap_url or "http://%s/soap/" % self.host
         self.autosave = autosave
 
-        # fix missing types with ImportDoctor, otherwise we get:
+        # Fix missing types with ImportDoctor, otherwise we get:
         # suds.TypeNotFound: Type not found: '(Array, # http://schemas.xmlsoap.org/soap/encoding/, )
         self._import = Import('http://schemas.xmlsoap.org/soap/encoding/')
         self._import.filter.add("urn:NSConfig")
@@ -123,7 +120,7 @@ class API(object):
         """Validates whether a command is read-only based on READONLY_COMMANDS"""
         ret = False
         for ROC in READONLY_COMMANDS:
-            if cmd.startswith(ROC): 
+            if cmd.startswith(ROC):
                     ret = True
         return ret
 
@@ -153,7 +150,7 @@ class API(object):
         """Saves NS Config."""
         resp = self.client.service.savensconfig()
         if resp.rc != 0:
-            raise InterActionError(resp.message)
+            raise InteractionError(resp.message)
 
         if DEBUG: print resp.message
 
