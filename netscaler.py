@@ -61,7 +61,7 @@ class API(object):
           volatile operations.
 
     To save time for re-usable code, it is a good idea subclassing this to
-    create methods for commonly used commands in your application. Example:
+    create methods for commonly used commands in your application. Example::
 
         class MyAPI(netscaler.API):
 

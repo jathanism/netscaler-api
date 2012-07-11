@@ -2,6 +2,10 @@
 NetScaler API
 =============
 
+.. contents::
+    :local:
+    :depth: 2
+
 Summary
 =======
 
@@ -42,10 +46,23 @@ In a script::
         client = netscaler.API('nos', username='nsroot', password='nsroot', wsdl_url=wsdl_url)
         print client.logged_in
 
+Documentation
+=============
+
 API Documentation
-=================
+-----------------
 
 Please review the :doc:`api`.
+
+Changelog
+---------
+
+Please review the :doc:`changelog`.
+
+License
+-------
+
+Please review the :doc:`license`.
 
 Performance
 ===========
@@ -101,7 +118,7 @@ you're tweaking your filtered WSDL. So whenever testing, always pass
 ``cache=None`` to the constructor to avoid this confusion.
 
 Command-line example
-=====================
+====================
 
 Ok now let's play with it::
 

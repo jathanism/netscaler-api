@@ -1,5 +1,5 @@
-:mod:`netscaler` --- NetScaler API Python Interface Doccumentation
-==================================================================
+API Documentation
+=================
 
 .. automodule:: netscaler
    :members:
