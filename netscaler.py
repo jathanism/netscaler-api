@@ -153,7 +153,7 @@ class API(object):
         """Saves NS Config."""
         resp = self.client.service.savensconfig()
         if resp.rc != 0:
-            raise InterActionError(resp.message)
+            raise InteractionError(resp.message)
 
         if DEBUG: print resp.message
 
