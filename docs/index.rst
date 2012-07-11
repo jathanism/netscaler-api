@@ -6,6 +6,13 @@ NetScaler API
     :local:
     :depth: 2
 
+.. toctree::
+    :hidden:
+
+    api
+    changelog
+    license
+
 Summary
 =======
 
